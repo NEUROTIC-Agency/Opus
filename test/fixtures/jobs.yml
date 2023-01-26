@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  salary: MyString
+  employment_type: MyString
+  location: MyString
+  role_description: MyText
+  requirements: MyText
+  benefits: MyText
+  interview_process: MyText
+  contact: MyString
+  expiry_date: 2023-01-25
+  status: MyString
+  searchable: false
+  recruitment_company: one
+  recruiter: one
+  tenant_id: 
+
+two:
+  title: MyString
+  salary: MyString
+  employment_type: MyString
+  location: MyString
+  role_description: MyText
+  requirements: MyText
+  benefits: MyText
+  interview_process: MyText
+  contact: MyString
+  expiry_date: 2023-01-25
+  status: MyString
+  searchable: false
+  recruitment_company: two
+  recruiter: two
+  tenant_id: 

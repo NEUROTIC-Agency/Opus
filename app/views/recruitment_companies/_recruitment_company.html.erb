@@ -1,0 +1,62 @@
+<div id="<%= dom_id recruitment_company %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= recruitment_company.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Subscribed:</strong>
+    <%= recruitment_company.subscribed %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Plan:</strong>
+    <%= recruitment_company.plan %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= recruitment_company.description %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Employees count:</strong>
+    <%= recruitment_company.employees_count %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Website:</strong>
+    <%= recruitment_company.website %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Location:</strong>
+    <%= recruitment_company.location %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Hidden:</strong>
+    <%= recruitment_company.hidden %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Currency:</strong>
+    <%= recruitment_company.currency %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Slug:</strong>
+    <%= recruitment_company.slug %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Tenant:</strong>
+    <%= recruitment_company.tenant_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this recruitment company", recruitment_company, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this recruitment company', edit_recruitment_company_path(recruitment_company), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

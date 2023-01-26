@@ -1,0 +1,27 @@
+<div id="<%= dom_id ticket %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Body:</strong>
+    <%= ticket.body %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Recruitment company:</strong>
+    <%= ticket.recruitment_company_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Status:</strong>
+    <%= ticket.status %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Tenant:</strong>
+    <%= ticket.tenant_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this ticket", ticket, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this ticket', edit_ticket_path(ticket), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

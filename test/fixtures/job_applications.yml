@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  seen: false
+  dealt_with: false
+  job: one
+  candidate: one
+  recruitment_company: one
+  tenant_id: 
+
+two:
+  status: MyString
+  seen: false
+  dealt_with: false
+  job: two
+  candidate: two
+  recruitment_company: two
+  tenant_id: 

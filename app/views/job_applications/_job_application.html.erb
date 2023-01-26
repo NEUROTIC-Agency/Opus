@@ -1,0 +1,42 @@
+<div id="<%= dom_id job_application %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Status:</strong>
+    <%= job_application.status %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Seen:</strong>
+    <%= job_application.seen %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Dealt with:</strong>
+    <%= job_application.dealt_with %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Job:</strong>
+    <%= job_application.job_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Candidate:</strong>
+    <%= job_application.candidate_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Recruitment company:</strong>
+    <%= job_application.recruitment_company_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Tenant:</strong>
+    <%= job_application.tenant_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this job application", job_application, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this job application', edit_job_application_path(job_application), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

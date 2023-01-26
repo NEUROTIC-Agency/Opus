@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  recruitment_company: one
+  status: MyString
+  tenant_id: 
+
+two:
+  body: MyText
+  recruitment_company: two
+  status: MyString
+  tenant_id: 

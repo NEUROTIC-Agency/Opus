@@ -1,0 +1,27 @@
+<div id="<%= dom_id note %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Body:</strong>
+    <%= note.body %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Reruiter:</strong>
+    <%= note.reruiter_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Candidate:</strong>
+    <%= note.candidate_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Tenant:</strong>
+    <%= note.tenant_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this note", note, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this note', edit_note_path(note), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
