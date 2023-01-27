@@ -1,6 +1,7 @@
 ## OpusAdmin
 
-### Current progress :  ![](https://geps.dev/progress/20)
+#### Current progress
+![](https://geps.dev/progress/20)
 
 ### Running the project
 - Make sure that you have `Ruby v.3.0.0` and Rails `7.0.4.2` installed
