@@ -10,12 +10,13 @@
 - ActsAsTenant.current_tenant is definied in ApplicationController with `set_current_tenant_by_subdomain(:company, :subdomain)`
 
 ### To do
-- [x] Draw Database schema, key values per model and tables relations
+- [x] Draw [Database schema](https://www.figma.com/file/rykj86L6cf3ApFiafoaq5g/Untitled?node-id=0%3A1&t=MG46fFBny3rAfZP6-1), key values per model and tables relations
 - [x] Set up Rails app with Postgresql & Tailwind built-in
 - [x] Implement basic scaffolding and data validation
 - [x] Prepare seeds with Faker
 - [x] Implement multitenancy and subdomain data separation with ActsAsTenant
 - [ ] Deploy to Heroku to make sure multitenancy and subdomains work in the production environment
+- [ ] Add Categories and Subcategories for Companies (not sure how we'll use them)
 - [ ] Scope resources for each Devise user and restrict their access
 - [ ] Create CRUD actions for Devise models
 - [ ] Create basic Navbar to facilitate navigation
