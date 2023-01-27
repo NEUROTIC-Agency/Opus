@@ -17,7 +17,7 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create job_application" do
     assert_difference("JobApplication.count") do
-      post job_applications_url, params: { job_application: { candidate_id: @job_application.candidate_id, dealt_with: @job_application.dealt_with, job_id: @job_application.job_id, recruitment_company_id: @job_application.recruitment_company_id, seen: @job_application.seen, status: @job_application.status, tenant_id: @job_application.tenant_id } }
+      post job_applications_url, params: { job_application: { candidate_id: @job_application.candidate_id, dealt_with: @job_application.dealt_with, job_id: @job_application.job_id, company_id: @job_application.company_id, seen: @job_application.seen, status: @job_application.status, tenant_id: @job_application.tenant_id } }
     end
 
     assert_redirected_to job_application_url(JobApplication.last)
@@ -34,7 +34,7 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update job_application" do
-    patch job_application_url(@job_application), params: { job_application: { candidate_id: @job_application.candidate_id, dealt_with: @job_application.dealt_with, job_id: @job_application.job_id, recruitment_company_id: @job_application.recruitment_company_id, seen: @job_application.seen, status: @job_application.status, tenant_id: @job_application.tenant_id } }
+    patch job_application_url(@job_application), params: { job_application: { candidate_id: @job_application.candidate_id, dealt_with: @job_application.dealt_with, job_id: @job_application.job_id, company_id: @job_application.company_id, seen: @job_application.seen, status: @job_application.status, tenant_id: @job_application.tenant_id } }
     assert_redirected_to job_application_url(@job_application)
   end
 

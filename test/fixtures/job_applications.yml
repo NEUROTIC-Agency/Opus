@@ -6,8 +6,8 @@ one:
   dealt_with: false
   job: one
   candidate: one
-  recruitment_company: one
-  tenant_id: 
+  company: one
+  tenant_id:
 
 two:
   status: MyString
@@ -15,5 +15,5 @@ two:
   dealt_with: false
   job: two
   candidate: two
-  recruitment_company: two
-  tenant_id: 
+  company: two
+  tenant_id:

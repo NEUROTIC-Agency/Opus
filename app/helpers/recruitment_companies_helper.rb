@@ -1,2 +1,0 @@
-module RecruitmentCompaniesHelper
-end

@@ -4,7 +4,7 @@ class CreateTickets < ActiveRecord::Migration[7.0]
       t.text :body
       t.references :recruiter, null: false, foreign_key: true
       t.string :status, null: false, default: 'Open'
-      t.bigint :tenant_id
+      t.belongs_to :company, null: false, foreign_key: true
 
       t.timestamps
     end

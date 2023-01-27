@@ -36,8 +36,7 @@ class DeviseCreateRecruiters < ActiveRecord::Migration[7.0]
       t.string :last_name
       t.string :phone
       t.string :role
-      t.references :recruitment_company
-      t.bigint :tenant_id
+      t.belongs_to :company, null: false, foreign_key: true
 
       t.timestamps null: false
     end

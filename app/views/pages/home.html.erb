@@ -1,0 +1,91 @@
+<div>
+  <h1 class="mb-6 text-4xl font-bold">Pages#home</h1>
+  <h3 class="mb-4 text-xl font-semibold">Login</h3>
+  <ul class="flex space-x-4">
+    <li><%= link_to "As an Admin", new_admin_session_path, class:'btn-light' %></li>
+    <li><%= link_to "As a Recruiter", new_recruiter_session_path, class:'btn-light' %></li>
+    <li><%= link_to "As a Candidate", new_candidate_session_path, class:'btn-light' %></li>
+  </ul>
+
+  <h3 class="mt-10 mb-2 text-xl font-semibold">Resources by sudbomain</h3>
+  <div id="companies" class="relative min-w-full overflow-x-auto">
+    <table class="w-full text-sm text-left text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-3">
+            Company
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Subdomain
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Recruiters
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Jobs
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Candidates
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Applications
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Notes
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Tickets
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Plan
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Status
+          </th>
+          <th scope="col" class="px-6 py-3 text-center">
+            Edit
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <%  Company.all.each do |company|  %>
+          <tr class="bg-white border-b hover:bg-gray-50 hover:cursor-pointer">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+              <%= company.name %>
+            </th>
+            <th scope="row" class="px-6 py-4 font-mono text-xs font-normal text-fuchsia-700 whitespace-nowrap ">
+              <%= company.subdomain %>
+            </th>
+            <td class="px-6 py-4 text-center">
+              <%= link_to company.recruiters.count, "http://#{company.subdomain}.lvh.me:3000/recruiters" %>
+            </td>
+            <td class="px-6 py-4 text-center">
+              <%= link_to company.jobs.count, "http://#{company.subdomain}.lvh.me:3000/jobs" %>
+            </td>
+            <td class="px-6 py-4 text-center">
+              <%= link_to company.candidates.count, "http://#{company.subdomain}.lvh.me:3000/candidates" %>
+            </td>
+            <td class="px-6 py-4 text-center">
+              <%= link_to company.job_applications.count, "http://#{company.subdomain}.lvh.me:3000/job_applications" %>
+            </td>
+            <td class="px-6 py-4 text-center">
+              <%= link_to company.notes.count, "http://#{company.subdomain}.lvh.me:3000/notes" %>
+            </td>
+            <td class="px-6 py-4 text-center">
+              <%= link_to company.tickets.count, "http://#{company.subdomain}.lvh.me:3000/tickets" %>
+            </td>
+            <td class="px-6 py-4">
+              <%= company.plan %>
+            </td>
+            <td class="px-6 py-4">
+              <%= company.hidden ? 'Hidden' : 'Visible' %>
+            </td>
+            <td class="px-6 py-4">
+              <%= link_to 'Edit', edit_company_path(company), class: "btn-light" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

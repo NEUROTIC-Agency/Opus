@@ -17,7 +17,7 @@ class JobApplicationsTest < ApplicationSystemTestCase
     fill_in "Candidate", with: @job_application.candidate_id
     check "Dealt with" if @job_application.dealt_with
     fill_in "Job", with: @job_application.job_id
-    fill_in "Recruitment company", with: @job_application.recruitment_company_id
+    fill_in "Company", with: @job_application.company_id
     check "Seen" if @job_application.seen
     fill_in "Status", with: @job_application.status
     fill_in "Tenant", with: @job_application.tenant_id
@@ -34,7 +34,7 @@ class JobApplicationsTest < ApplicationSystemTestCase
     fill_in "Candidate", with: @job_application.candidate_id
     check "Dealt with" if @job_application.dealt_with
     fill_in "Job", with: @job_application.job_id
-    fill_in "Recruitment company", with: @job_application.recruitment_company_id
+    fill_in "Company", with: @job_application.company_id
     check "Seen" if @job_application.seen
     fill_in "Status", with: @job_application.status
     fill_in "Tenant", with: @job_application.tenant_id

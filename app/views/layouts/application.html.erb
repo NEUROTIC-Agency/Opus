@@ -10,9 +10,17 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
+  <div>
+    <% if admin_signed_in? %>
+    You're logged as an admin.
+    <% elsif candidate_signed_in? %>
+    You're logged as a candidate_id
+    <% elsif recruiter_signed_in? %>
+    You're logged as a recruiter
+    <% end %>
+  </div>
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container flex px-5 mx-auto mt-28">
       <%= yield %>
     </main>
   </body>

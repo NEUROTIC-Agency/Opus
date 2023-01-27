@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_26_164509) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_26_163759) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,28 +74,32 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_26_164509) do
     t.string "title"
     t.string "linkedin"
     t.boolean "completed", default: false
-    t.date "availability", default: "2023-01-26"
+    t.date "availability", default: "2023-01-27"
     t.text "favorite_jobs", default: [], array: true
     t.text "company_alerts", default: [], array: true
-    t.datetime "last_seen_at", default: "2023-01-26 23:07:52"
-    t.bigint "recruitment_company_id", null: false
-    t.bigint "tenant_id"
+    t.datetime "last_seen_at", default: "2023-01-27 21:46:45"
+    t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_candidates_on_company_id"
     t.index ["email"], name: "index_candidates_on_email", unique: true
-    t.index ["recruitment_company_id"], name: "index_candidates_on_recruitment_company_id"
     t.index ["reset_password_token"], name: "index_candidates_on_reset_password_token", unique: true
   end
 
-  create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string "slug", null: false
-    t.integer "sluggable_id", null: false
-    t.string "sluggable_type", limit: 50
-    t.string "scope"
-    t.datetime "created_at"
-    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.boolean "subscribed", default: false
+    t.string "plan", default: "Free"
+    t.text "description"
+    t.integer "employees_count"
+    t.string "website"
+    t.string "location"
+    t.boolean "hidden", default: true
+    t.string "currency"
+    t.string "subdomain", null: false
+    t.boolean "terms_of_service", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "job_applications", force: :cascade do |t|
@@ -104,15 +108,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_26_164509) do
     t.boolean "dealt_with", default: false, null: false
     t.bigint "job_id", null: false
     t.bigint "candidate_id", null: false
-    t.bigint "recruitment_company_id", null: false
+    t.bigint "company_id", null: false
     t.bigint "recruiter_id"
-    t.bigint "tenant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["candidate_id"], name: "index_job_applications_on_candidate_id"
+    t.index ["company_id"], name: "index_job_applications_on_company_id"
     t.index ["job_id"], name: "index_job_applications_on_job_id"
     t.index ["recruiter_id"], name: "index_job_applications_on_recruiter_id"
-    t.index ["recruitment_company_id"], name: "index_job_applications_on_recruitment_company_id"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -128,24 +131,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_26_164509) do
     t.date "expiry_date"
     t.string "status"
     t.boolean "searchable", default: false
-    t.bigint "recruitment_company_id", null: false
-    t.bigint "tenant_id"
+    t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["recruitment_company_id"], name: "index_jobs_on_recruitment_company_id"
+    t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
   create_table "notes", force: :cascade do |t|
     t.text "body"
-    t.bigint "recruitment_company_id", null: false
     t.bigint "recruiter_id", null: false
     t.bigint "candidate_id", null: false
-    t.bigint "tenant_id"
+    t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["candidate_id"], name: "index_notes_on_candidate_id"
+    t.index ["company_id"], name: "index_notes_on_company_id"
     t.index ["recruiter_id"], name: "index_notes_on_recruiter_id"
-    t.index ["recruitment_company_id"], name: "index_notes_on_recruitment_company_id"
   end
 
   create_table "recruiters", force: :cascade do |t|
@@ -158,52 +159,37 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_26_164509) do
     t.string "last_name"
     t.string "phone"
     t.string "role"
-    t.bigint "recruitment_company_id"
-    t.bigint "tenant_id"
+    t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_recruiters_on_company_id"
     t.index ["email"], name: "index_recruiters_on_email", unique: true
-    t.index ["recruitment_company_id"], name: "index_recruiters_on_recruitment_company_id"
     t.index ["reset_password_token"], name: "index_recruiters_on_reset_password_token", unique: true
-  end
-
-  create_table "recruitment_companies", force: :cascade do |t|
-    t.string "name"
-    t.boolean "subscribed", default: false
-    t.string "plan", default: "Free"
-    t.text "description"
-    t.integer "employees_count"
-    t.string "website"
-    t.string "location"
-    t.boolean "hidden", default: true
-    t.string "currency"
-    t.string "slug"
-    t.boolean "terms_of_service"
-    t.bigint "tenant_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "tickets", force: :cascade do |t|
     t.text "body"
     t.bigint "recruiter_id", null: false
     t.string "status", default: "Open", null: false
-    t.bigint "tenant_id"
+    t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_tickets_on_company_id"
     t.index ["recruiter_id"], name: "index_tickets_on_recruiter_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "candidates", "recruitment_companies"
+  add_foreign_key "candidates", "companies"
   add_foreign_key "job_applications", "candidates"
+  add_foreign_key "job_applications", "companies"
   add_foreign_key "job_applications", "jobs"
   add_foreign_key "job_applications", "recruiters"
-  add_foreign_key "job_applications", "recruitment_companies"
-  add_foreign_key "jobs", "recruitment_companies"
+  add_foreign_key "jobs", "companies"
   add_foreign_key "notes", "candidates"
+  add_foreign_key "notes", "companies"
   add_foreign_key "notes", "recruiters"
-  add_foreign_key "notes", "recruitment_companies"
+  add_foreign_key "recruiters", "companies"
+  add_foreign_key "tickets", "companies"
   add_foreign_key "tickets", "recruiters"
 end

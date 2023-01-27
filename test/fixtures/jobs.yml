@@ -13,9 +13,9 @@ one:
   expiry_date: 2023-01-25
   status: MyString
   searchable: false
-  recruitment_company: one
+  company: one
   recruiter: one
-  tenant_id: 
+  tenant_id:
 
 two:
   title: MyString
@@ -30,6 +30,6 @@ two:
   expiry_date: 2023-01-25
   status: MyString
   searchable: false
-  recruitment_company: two
+  company: two
   recruiter: two
-  tenant_id: 
+  tenant_id:

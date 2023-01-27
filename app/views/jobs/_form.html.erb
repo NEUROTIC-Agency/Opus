@@ -1,6 +1,6 @@
-<%= form_with(model: job, class: "contents") do |form| %>
+<%= form_with(model: [@company, @job], class: "contents") do |form| %>
   <% if job.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+    <div id="error_explanation" class="px-3 py-2 mt-3 font-medium text-red-500 rounded-lg bg-red-50">
       <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
 
       <ul>
@@ -69,21 +69,6 @@
   <div class="my-5">
     <%= form.label :searchable %>
     <%= form.check_box :searchable, class: "block mt-2 h-5 w-5" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :recruitment_company_id %>
-    <%= form.text_field :recruitment_company_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :recruiter_id %>
-    <%= form.text_field :recruiter_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :tenant_id %>
-    <%= form.text_field :tenant_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="inline">

@@ -13,8 +13,7 @@ class CreateJobs < ActiveRecord::Migration[7.0]
       t.date :expiry_date
       t.string :status
       t.boolean :searchable, default: false
-      t.references :recruitment_company, null: false, foreign_key: true
-      t.bigint :tenant_id
+      t.belongs_to :company, null: false, foreign_key: true
 
       t.timestamps
     end

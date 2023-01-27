@@ -7,35 +7,40 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "destroying data..."
-RecruitmentCompany.destroy_all
+Company.destroy_all
 Recruiter.destroy_all
 Candidate.destroy_all
 Job.destroy_all
 puts "Seeds clean"
 puts "Starting new seeds"
-puts "=> Creating Recruitment Companies, wait..."
+puts "=> Creating Companies, wait..."
 
 5.times do
-  rc = RecruitmentCompany.new
-  rc.name = Faker::Company.name
-  rc.location = Faker::Address.city
-  rc.website = w = Faker::Internet.domain_name
-  rc.description = Faker::Lorem.paragraphs(number: 4).join(' ')
-  rc.employees_count = ['0-50', '51-200','201-500', '+500'].sample
-  rc.subscribed = true
+  company = Company.new
+  company.name = Faker::Company.name
+  company.location = Faker::Address.city
+  company.website = w = Faker::Internet.domain_name
+  company.description = Faker::Lorem.paragraphs(number: 4).join(' ')
+  company.employees_count = ['0-50', '51-200','201-500', '+500'].sample
+  company.subscribed = true
   image = URI.parse(Faker::Company.logo).open
-  rc.avatar.attach(io: image, filename: "avatar.png" , content_type: "image/png")
-  rc.hidden = false
-  rc.currency = ['Sterling', 'Euro', 'US Dollar'].sample
-  rc.is_dummy = true
-  rc.save
+  company.avatar.attach(io: image, filename: "avatar.png" , content_type: "image/png")
+  company.hidden = false
+  company.currency = ['Sterling', 'Euro', 'US Dollar'].sample
+  company.subdomain = company.name.parameterize
+  company.is_dummy = true
+  company.save
+  if company.errors.any?
+    puts "#{company.errors.inspect}"
+    break
+  end
 end
 
-puts "#{RecruitmentCompany.count} companies created"
+puts "#{Company.count} companies created"
 
 puts "=> Creating Recruiters, wait..."
 
-RecruitmentCompany.all.each do |rc|
+Company.all.each do |rc|
   rand(1..4).times do
     r = Recruiter.new
     image = URI.parse("https://api.lorem.space/image/face?w=256&h=256").open
@@ -44,7 +49,7 @@ RecruitmentCompany.all.each do |rc|
     r.first_name = Faker::Name.first_name
     r.last_name = Faker::Name.last_name
     r.role = ["Admin", "Member"].sample
-    r.recruitment_company = rc
+    r.company = rc
     r.password = pw = Faker::Internet.password
     r.password_confirmation = pw
     r.save
@@ -55,7 +60,7 @@ puts "#{Recruiter.all.count} recruiters created"
 
 puts "=> Creating loggable recruiter profile, wait..."
 
-mi6 = RecruitmentCompany.create(name: 'MI6', description:'Military Intelligence, section 6', location: 'London', employees_count: '+500', currency: 'Sterling', website: 'mi6.com', subscribed: true, hidden: false)
+mi6 = Company.create(name: 'MI6', description:'Military Intelligence, section 6', location: 'London', employees_count: '+500', currency: 'Sterling', website: 'mi6.com', subscribed: true, hidden: false, subdomain:'mi6')
 
 jb = Recruiter.new
 jb.first_name = 'James'
@@ -66,11 +71,11 @@ jb.password_confirmation = 'james@bond.com'
 jb.role = "Admin"
 image = URI.parse("https://static.wikia.nocookie.net/jamesbond/images/1/11/BondConnery.jpg/revision/latest?cb=20121103192409&path-prefix=es").open
 jb.avatar.attach(io: image, filename: "avatar.png" , content_type: "image/png")
-jb.recruitment_company = mi6
+jb.company = mi6
 jb.save
 
 puts "Loggable recruiter profile created"
-puts "You can now login as a Recruiter with 'james@bond.com' with the password 'james@bond.com' as part of RecruitmentCompany 'MI6'"
+puts "You can now login as a Recruiter with 'james@bond.com' with the password 'james@bond.com' as part of Company 'MI6'"
 puts "=> Creating jobs, wait..."
 
 
@@ -78,7 +83,7 @@ seniority = ["Internship", "Junior / +3 years", "Mid-level / +5 years", "Partner
 employment_type = ["Part-time", "Full-time"]
 location = ["London Area", "Remote"]
 status = ["Closed", "Open"]
-RecruitmentCompany.all.each do |rc|
+Company.all.each do |rc|
   rand(5..10).times do
     j = Job.new
     j.title = Faker::Job.title
@@ -93,7 +98,7 @@ RecruitmentCompany.all.each do |rc|
     j.expiry_date = Date.today + rand(12).months + rand(10).days
     j.status = status.sample
     j.searchable = true
-    j.recruitment_company = rc
+    j.company = rc
     j.save
   end
 end
@@ -101,7 +106,7 @@ end
 puts "#{Job.count} jobs created"
 puts "=> Creating candidates, wait... (This might take a while because of avatars)"
 
-RecruitmentCompany.all.each_with_index do |rc, i|
+Company.all.each_with_index do |rc, i|
   repetitor = rand(2..10)
   repetitor.times do |index|
     c = Candidate.new
@@ -127,7 +132,7 @@ RecruitmentCompany.all.each_with_index do |rc, i|
     c.availability = Faker::Date.between(from: Date.today - 10.days, to: Date.today + 30.days)
     c.password = pw = Faker::Internet.password
     c.password_confirmation = pw
-    c.recruitment_company = rc
+    c.company = rc
     c.is_dummy = true
     c.save
     if index == repetitor - 1
@@ -145,8 +150,8 @@ Candidate.all.sample(candidate_count/4).each do |c|
   note = Note.new
   note.candidate = c
   note.body = Faker::Lorem.paragraphs(number: 2)
-  note.recruitment_company = c.recruitment_company
-  note.recruiter = c.recruitment_company.recruiters.sample
+  note.company = c.company
+  note.recruiter = c.company.recruiters.sample
   note.save
   if note.errors.any?
     puts "#{note.errors.inspect}"
@@ -162,7 +167,7 @@ Candidate.all.sample(candidate_count/4).each do |c|
   ja.candidate = c
   ja.status = "Applied"
   ja.job = Job.all.sample
-  ja.recruitment_company = c.recruitment_company
+  ja.company = c.company
   ja.save
 end
 
@@ -176,10 +181,11 @@ Admin.create(email: 'gonzalo@neurotic.co', password:'gonzalo@neurotic.co', passw
 puts "#{Admin.count} Admins created"
 puts "=> Creating Tickets"
 
-RecruitmentCompany.all.each do |rc|
+Company.all.each do |rc|
   ticket = Ticket.new
   ticket.body = Faker::Lorem.paragraphs(number: 3)
   ticket.recruiter = rc.recruiters.sample
+  ticket.company = ticket.recruiter.company
   ticket.save
   if ticket.errors.any?
     puts "#{ticket.errors.inspect}"

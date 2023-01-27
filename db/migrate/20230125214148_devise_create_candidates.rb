@@ -48,8 +48,7 @@ class DeviseCreateCandidates < ActiveRecord::Migration[7.0]
       t.text :favorite_jobs, default: [], array:true
       t.text :company_alerts, default: [], array:true
       t.datetime :last_seen_at, default: DateTime.now
-      t.references :recruitment_company, null: false, foreign_key: true
-      t.bigint :tenant_id
+      t.belongs_to :company, null: false, foreign_key: true
 
       t.timestamps null: false
     end

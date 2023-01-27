@@ -1,22 +1,17 @@
 <div id="<%= dom_id ticket %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Body:</strong>
+    <strong class="block mb-1 font-medium">Body:</strong>
     <%= ticket.body %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Recruitment company:</strong>
-    <%= ticket.recruitment_company_id %>
+    <strong class="block mb-1 font-medium">Recruiter</strong>
+    <%= ticket.recruiter.first_name %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Status:</strong>
+    <strong class="block mb-1 font-medium">Status:</strong>
     <%= ticket.status %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Tenant:</strong>
-    <%= ticket.tenant_id %>
   </p>
 
   <% if action_name != "show" %>

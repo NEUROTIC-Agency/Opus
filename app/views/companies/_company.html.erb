@@ -1,0 +1,57 @@
+<div >
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Name:</strong>
+    <%= company.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Subscribed:</strong>
+    <%= company.subscribed %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Plan:</strong>
+    <%= company.plan %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Description:</strong>
+    <%= company.description %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Employees count:</strong>
+    <%= company.employees_count %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Website:</strong>
+    <%= company.website %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Location:</strong>
+    <%= company.location %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Hidden:</strong>
+    <%= company.hidden %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Currency:</strong>
+    <%= company.currency %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block mb-1 font-medium">Subdomain:</strong>
+    <%= company.subdomain %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this company", company, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this company', edit_company_path(company), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

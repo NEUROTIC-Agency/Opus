@@ -15,7 +15,7 @@ class TicketsTest < ApplicationSystemTestCase
     click_on "New ticket"
 
     fill_in "Body", with: @ticket.body
-    fill_in "Recruitment company", with: @ticket.recruitment_company_id
+    fill_in "Company", with: @ticket.company_id
     fill_in "Status", with: @ticket.status
     fill_in "Tenant", with: @ticket.tenant_id
     click_on "Create Ticket"
@@ -29,7 +29,7 @@ class TicketsTest < ApplicationSystemTestCase
     click_on "Edit this ticket", match: :first
 
     fill_in "Body", with: @ticket.body
-    fill_in "Recruitment company", with: @ticket.recruitment_company_id
+    fill_in "Company", with: @ticket.company_id
     fill_in "Status", with: @ticket.status
     fill_in "Tenant", with: @ticket.tenant_id
     click_on "Update Ticket"

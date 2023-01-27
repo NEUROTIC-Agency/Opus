@@ -21,7 +21,7 @@ class JobsTest < ApplicationSystemTestCase
     fill_in "Interview process", with: @job.interview_process
     fill_in "Location", with: @job.location
     fill_in "Recruiter", with: @job.recruiter_id
-    fill_in "Recruitment company", with: @job.recruitment_company_id
+    fill_in "Company", with: @job.company_id
     fill_in "Requirements", with: @job.requirements
     fill_in "Role description", with: @job.role_description
     fill_in "Salary", with: @job.salary
@@ -46,7 +46,7 @@ class JobsTest < ApplicationSystemTestCase
     fill_in "Interview process", with: @job.interview_process
     fill_in "Location", with: @job.location
     fill_in "Recruiter", with: @job.recruiter_id
-    fill_in "Recruitment company", with: @job.recruitment_company_id
+    fill_in "Company", with: @job.company_id
     fill_in "Requirements", with: @job.requirements
     fill_in "Role description", with: @job.role_description
     fill_in "Salary", with: @job.salary

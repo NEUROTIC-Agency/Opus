@@ -17,7 +17,7 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create job" do
     assert_difference("Job.count") do
-      post jobs_url, params: { job: { benefits: @job.benefits, contact: @job.contact, employment_type: @job.employment_type, expiry_date: @job.expiry_date, interview_process: @job.interview_process, location: @job.location, recruiter_id: @job.recruiter_id, recruitment_company_id: @job.recruitment_company_id, requirements: @job.requirements, role_description: @job.role_description, salary: @job.salary, searchable: @job.searchable, status: @job.status, tenant_id: @job.tenant_id, title: @job.title } }
+      post jobs_url, params: { job: { benefits: @job.benefits, contact: @job.contact, employment_type: @job.employment_type, expiry_date: @job.expiry_date, interview_process: @job.interview_process, location: @job.location, recruiter_id: @job.recruiter_id, company_id: @job.company_id, requirements: @job.requirements, role_description: @job.role_description, salary: @job.salary, searchable: @job.searchable, status: @job.status, tenant_id: @job.tenant_id, title: @job.title } }
     end
 
     assert_redirected_to job_url(Job.last)
@@ -34,7 +34,7 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update job" do
-    patch job_url(@job), params: { job: { benefits: @job.benefits, contact: @job.contact, employment_type: @job.employment_type, expiry_date: @job.expiry_date, interview_process: @job.interview_process, location: @job.location, recruiter_id: @job.recruiter_id, recruitment_company_id: @job.recruitment_company_id, requirements: @job.requirements, role_description: @job.role_description, salary: @job.salary, searchable: @job.searchable, status: @job.status, tenant_id: @job.tenant_id, title: @job.title } }
+    patch job_url(@job), params: { job: { benefits: @job.benefits, contact: @job.contact, employment_type: @job.employment_type, expiry_date: @job.expiry_date, interview_process: @job.interview_process, location: @job.location, recruiter_id: @job.recruiter_id, company_id: @job.company_id, requirements: @job.requirements, role_description: @job.role_description, salary: @job.salary, searchable: @job.searchable, status: @job.status, tenant_id: @job.tenant_id, title: @job.title } }
     assert_redirected_to job_url(@job)
   end
 

@@ -6,9 +6,8 @@ class CreateJobApplications < ActiveRecord::Migration[7.0]
       t.boolean :dealt_with, null: false, default: false
       t.references :job, null: false, foreign_key: true
       t.references :candidate, null: false, foreign_key: true
-      t.references :recruitment_company, null: false, foreign_key: true
+      t.belongs_to :company, null: false, foreign_key: true
       t.references :recruiter, null: true, foreign_key: true
-      t.bigint :tenant_id
 
       t.timestamps
     end

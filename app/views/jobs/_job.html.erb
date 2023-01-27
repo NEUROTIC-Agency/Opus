@@ -1,81 +1,66 @@
 <div id="<%= dom_id job %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
+    <strong class="block mb-1 font-medium">Title:</strong>
     <%= job.title %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Salary:</strong>
+    <strong class="block mb-1 font-medium">Salary:</strong>
     <%= job.salary %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Employment type:</strong>
+    <strong class="block mb-1 font-medium">Employment type:</strong>
     <%= job.employment_type %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Location:</strong>
+    <strong class="block mb-1 font-medium">Location:</strong>
     <%= job.location %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Role description:</strong>
+    <strong class="block mb-1 font-medium">Role description:</strong>
     <%= job.role_description %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Requirements:</strong>
+    <strong class="block mb-1 font-medium">Requirements:</strong>
     <%= job.requirements %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Benefits:</strong>
+    <strong class="block mb-1 font-medium">Benefits:</strong>
     <%= job.benefits %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Interview process:</strong>
+    <strong class="block mb-1 font-medium">Interview process:</strong>
     <%= job.interview_process %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Contact:</strong>
+    <strong class="block mb-1 font-medium">Contact:</strong>
     <%= job.contact %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Expiry date:</strong>
+    <strong class="block mb-1 font-medium">Expiry date:</strong>
     <%= job.expiry_date %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Status:</strong>
+    <strong class="block mb-1 font-medium">Status:</strong>
     <%= job.status %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Searchable:</strong>
+    <strong class="block mb-1 font-medium">Searchable:</strong>
     <%= job.searchable %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Recruitment company:</strong>
-    <%= job.recruitment_company_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Recruiter:</strong>
-    <%= job.recruiter_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Tenant:</strong>
-    <%= job.tenant_id %>
-  </p>
-
   <% if action_name != "show" %>
-    <%= link_to "Show this job", job, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Show this job", job_path(job), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this job', edit_job_path(job), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>

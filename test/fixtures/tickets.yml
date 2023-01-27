@@ -2,12 +2,12 @@
 
 one:
   body: MyText
-  recruitment_company: one
+  company: one
   status: MyString
-  tenant_id: 
+  tenant_id:
 
 two:
   body: MyText
-  recruitment_company: two
+  company: two
   status: MyString
-  tenant_id: 
+  tenant_id:
