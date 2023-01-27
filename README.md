@@ -1,6 +1,6 @@
 ## OpusAdmin
 
-#### Current progress
+### Current progress
 ![](https://geps.dev/progress/20)
 
 ### Running the project
