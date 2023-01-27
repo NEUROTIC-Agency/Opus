@@ -3,7 +3,7 @@
 - Make sure that you have Ruby v.3.0.0 and Rails 7.0.4.2 installed
 - Clone repository
 ```
-https://github.com/godiaz/SilverSwanSearch.git
+$ git clone git https://github.com/godiaz/opus.git
 ```
 - Run `bundle install` and ``rails db:setup``
 - Now you can launch the rails server locally with the command ``bin/dev`` *(not rails s)*
