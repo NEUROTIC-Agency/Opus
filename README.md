@@ -27,8 +27,10 @@
 - [ ] Implement search on all resources
 - [ ] Create mailers
 - [ ] Test for N+1 queries
+- [ ] Implement basic analytics
 - [ ] Install ViewComponent and Lookbook
 - [ ] Implement High Fidelity frontend on all the pages related to models
 - [ ] Implement High Fidelity frontend on marketing pages (content needed)
 - [ ] Work on Turbo actions
 - [ ] Implement basic frontend for Companies that won't be using a pluggable website
+- [ ] Implement payment system
