@@ -14,7 +14,7 @@ $ git clone git https://github.com/godiaz/opus.git
 - All the models except the Admin model must belong to a Company, all related records are compartmentalized via their company_id
 - Belongs to association is handled by the acts_as_tenant(:company) method on each model
 - Therefre all the resources are only accesible via the company's subdomain
-- Subdomains can be accessed locally lvh.me. Ex: http://subdomain.lvh.me:3000/jobs **(very important: this not a normal localhost)**
+- Subdomains can be accessed locally lvh.me. Ex: http://subdomain.lvh.me:3000/jobs **(very important: you will have to replace _subdomain_, and be careful, this not a normal localhost)**
 - For lvh to work locally, config hosts must disabled in application.rb : `config.hosts = nil`
 - ActsAsTenant.current_tenant is definied in ApplicationController with `set_current_tenant_by_subdomain(:company, :subdomain)`
 
