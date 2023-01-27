@@ -1,20 +1,20 @@
 ## Opus
 ### Running the project
-- Make sure that you have Ruby v.3.0.0 and Rails 7.0.4.2 installed
+- Make sure that you have `Ruby v.3.0.0` and Rails `7.0.4.2` installed
 - Clone repository
 ```
 $ git clone git https://github.com/godiaz/opus.git
 ```
-- Run `bundle install` and ``rails db:setup``
-- Now you can launch the rails server locally with the command ``bin/dev`` *(not rails s)*
-- Go to localhost:3000
+- Run `bundle install` and `rails db:setup`
+- Now you can launch the rails server locally with the command `bin/dev` **(not rails s because we need the Procfile to run Tailwind)**
+- Go to [localhost:3000](http://localhost:3000/)
 
 ### Row-level multitenancy managed by [ActsAsTenant](https://github.com/ErwinM/acts_as_tenant)
 - Each recruitment company (Company) has a subdomain (mandatory value upon creation)
 - All the models except the Admin model must belong to a Company, all related records are compartmentalized via their company_id
 - Belongs to association is handled by the acts_as_tenant(:company) method on each model
 - Therefre all the resources are only accesible via the company's subdomain
-- Subdomains can be accessed locally lvh.me. Ex: http://subdomain.lvh.me:3000/jobs
+- Subdomains can be accessed locally lvh.me. Ex: http://subdomain.lvh.me:3000/jobs **(very important: this not a normal localhost)**
 - For lvh to work locally, config hosts must disabled in application.rb : `config.hosts = nil`
 - ActsAsTenant.current_tenant is definied in ApplicationController with `set_current_tenant_by_subdomain(:company, :subdomain)`
 
