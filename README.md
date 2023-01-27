@@ -1,4 +1,13 @@
-# README
+## Opus
+### Running the project
+- Make sure that you have Ruby v.3.0.0 and Rails 7.0.4.2 installed
+- Clone repository
+```
+https://github.com/godiaz/SilverSwanSearch.git
+```
+- Run `bundle install` and ``rails db:setup``
+- Now you can launch the rails server locally with the command ``bin/dev`` *(not rails s)*
+- Go to localhost:3000
 
 ### Row-level multitenancy managed by [ActsAsTenant](https://github.com/ErwinM/acts_as_tenant)
 - Each recruitment company (Company) has a subdomain (mandatory value upon creation)
@@ -34,3 +43,12 @@
 - [ ] Work on Turbo actions
 - [ ] Implement basic frontend for Companies that won't be using a pluggable website
 - [ ] Implement payment system
+
+### Deploying to Heroku
+- Once you have full acess to Heroku, you need to configure a staging remote to be able to push code into it:
+```
+$ heroku create --remote opus-staging
+```
+- Always deploy first into the staging `git push heroku main --app=opus-staging`.
+- Once your changes are validated in the staging, deploy to master `git push heroku main --app=opus`.
+- You can find more info on heroku page: https://devcenter.heroku.com/articles/git
