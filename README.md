@@ -17,10 +17,17 @@ $ git clone git https://github.com/godiaz/opus.git
 - Each recruitment company (Company) has a subdomain (mandatory value upon creation)
 - All the models except the Admin model must belong to a Company, all related records are compartmentalized via their company_id
 - Belongs to association is handled by the acts_as_tenant(:company) method on each model
-- Therefre all the resources are only accesible via the company's subdomain
+- Therefore all the resources are only accesible via the company's subdomain
 - Subdomains can be accessed locally lvh.me. Ex: http://subdomain.lvh.me:3000/jobs **(very important: you will have to replace _subdomain_ value with an existing one, and be careful, this not a normal localhost)**
 - For lvh to work locally, config hosts must disabled in application.rb : `config.hosts = nil`
 - ActsAsTenant.current_tenant is definied in ApplicationController with `set_current_tenant_by_subdomain(:company, :subdomain)`
+- When a subdomain is detected, the tenant will be set and this scopes all the searches
+```
+# When hitting the subdomain of Company.find(3) the following searches will only return objects
+# where company_id == 3
+Recruiter.all =>  # all recruiters with company_id => 3
+Recruiter.notes.all #  => all notes with company_id => 3
+```
 
 ### To do
 - [x] Draw [Database schema](https://www.figma.com/file/rykj86L6cf3ApFiafoaq5g/Untitled?node-id=0%3A1&t=MG46fFBny3rAfZP6-1), key values per model and tables relations
