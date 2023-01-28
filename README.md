@@ -25,7 +25,7 @@ $ git clone git https://github.com/godiaz/opus.git
 ```ruby
 # When hitting the subdomain of Company.find(3) the following searches will only return objects
 # where company_id == 3
-Recruiter.all =>  # all recruiters with company_id => 3
+Recruiter.all # => all recruiters with company_id => 3
 Recruiter.notes.all #  => all notes with company_id => 3
 ```
 
