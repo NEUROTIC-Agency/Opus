@@ -22,7 +22,7 @@ $ git clone git https://github.com/godiaz/opus.git
 - For lvh to work locally, config hosts must disabled in application.rb : `config.hosts = nil`
 - ActsAsTenant.current_tenant is definied in ApplicationController with `set_current_tenant_by_subdomain(:company, :subdomain)`
 - When a subdomain is detected, the tenant will be set and this scopes all the searches
-```
+```ruby
 # When hitting the subdomain of Company.find(3) the following searches will only return objects
 # where company_id == 3
 Recruiter.all =>  # all recruiters with company_id => 3
